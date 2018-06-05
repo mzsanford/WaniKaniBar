@@ -7,21 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B525ABE720A34B3500A388E6 /* WaniKaniBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B525ABE620A34B3500A388E6 /* WaniKaniBarTests.swift */; };
+		B577204A209DD85600C7BAE5 /* time.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5772049209DD85600C7BAE5 /* time.swift */; };
 		B5CF0E33209B759A00A700F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF0E32209B759A00A700F6 /* AppDelegate.swift */; };
 		B5CF0E35209B759A00A700F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5CF0E34209B759A00A700F6 /* Assets.xcassets */; };
 		B5CF0E38209B759A00A700F6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5CF0E36209B759A00A700F6 /* MainMenu.xib */; };
+		B5CF0E41209B789500A700F6 /* WaniKaniBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF0E40209B789500A700F6 /* WaniKaniBarController.swift */; };
+		B5CF0E43209B7DD300A700F6 /* WaniKaniAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF0E42209B7DD300A700F6 /* WaniKaniAPI.swift */; };
+		B5E87AE6209C79A800D3B261 /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E87AE4209C79A800D3B261 /* PreferencesWindow.swift */; };
+		B5E87AE7209C79A800D3B261 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E87AE5209C79A800D3B261 /* PreferencesWindow.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B525ABE920A34B3500A388E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5CF0E27209B759A00A700F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5CF0E2E209B759A00A700F6;
+			remoteInfo = WaniKaniBar;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		B525ABE420A34B3500A388E6 /* WaniKaniBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaniKaniBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B525ABE620A34B3500A388E6 /* WaniKaniBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaniKaniBarTests.swift; sourceTree = "<group>"; };
+		B525ABE820A34B3500A388E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5772049209DD85600C7BAE5 /* time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = time.swift; sourceTree = "<group>"; };
 		B5CF0E2F209B759A00A700F6 /* WaniKaniBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaniKaniBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5CF0E32209B759A00A700F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5CF0E34209B759A00A700F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5CF0E37209B759A00A700F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B5CF0E39209B759A00A700F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5CF0E3A209B759A00A700F6 /* WaniKaniBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WaniKaniBar.entitlements; sourceTree = "<group>"; };
+		B5CF0E40209B789500A700F6 /* WaniKaniBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaniKaniBarController.swift; sourceTree = "<group>"; };
+		B5CF0E42209B7DD300A700F6 /* WaniKaniAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaniKaniAPI.swift; sourceTree = "<group>"; };
+		B5E87AE4209C79A800D3B261 /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
+		B5E87AE5209C79A800D3B261 /* PreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B525ABE120A34B3500A388E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5CF0E2C209B759A00A700F6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -32,10 +63,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B525ABE520A34B3500A388E6 /* WaniKaniBarTests */ = {
+			isa = PBXGroup;
+			children = (
+				B525ABE620A34B3500A388E6 /* WaniKaniBarTests.swift */,
+				B525ABE820A34B3500A388E6 /* Info.plist */,
+			);
+			path = WaniKaniBarTests;
+			sourceTree = "<group>";
+		};
+		B5772048209DD83E00C7BAE5 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				B5772049209DD85600C7BAE5 /* time.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		B5CF0E26209B759A00A700F6 = {
 			isa = PBXGroup;
 			children = (
 				B5CF0E31209B759A00A700F6 /* WaniKaniBar */,
+				B525ABE520A34B3500A388E6 /* WaniKaniBarTests */,
 				B5CF0E30209B759A00A700F6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -44,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				B5CF0E2F209B759A00A700F6 /* WaniKaniBar.app */,
+				B525ABE420A34B3500A388E6 /* WaniKaniBarTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -52,6 +102,11 @@
 			isa = PBXGroup;
 			children = (
 				B5CF0E32209B759A00A700F6 /* AppDelegate.swift */,
+				B5CF0E40209B789500A700F6 /* WaniKaniBarController.swift */,
+				B5772048209DD83E00C7BAE5 /* utils */,
+				B5E87AE4209C79A800D3B261 /* PreferencesWindow.swift */,
+				B5E87AE5209C79A800D3B261 /* PreferencesWindow.xib */,
+				B5CF0E42209B7DD300A700F6 /* WaniKaniAPI.swift */,
 				B5CF0E34209B759A00A700F6 /* Assets.xcassets */,
 				B5CF0E36209B759A00A700F6 /* MainMenu.xib */,
 				B5CF0E39209B759A00A700F6 /* Info.plist */,
@@ -63,6 +118,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B525ABE320A34B3500A388E6 /* WaniKaniBarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B525ABED20A34B3500A388E6 /* Build configuration list for PBXNativeTarget "WaniKaniBarTests" */;
+			buildPhases = (
+				B525ABE020A34B3500A388E6 /* Sources */,
+				B525ABE120A34B3500A388E6 /* Frameworks */,
+				B525ABE220A34B3500A388E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B525ABEA20A34B3500A388E6 /* PBXTargetDependency */,
+			);
+			name = WaniKaniBarTests;
+			productName = WaniKaniBarTests;
+			productReference = B525ABE420A34B3500A388E6 /* WaniKaniBarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B5CF0E2E209B759A00A700F6 /* WaniKaniBar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5CF0E3D209B759A00A700F6 /* Build configuration list for PBXNativeTarget "WaniKaniBar" */;
@@ -90,6 +163,11 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Ben Griffith";
 				TargetAttributes = {
+					B525ABE320A34B3500A388E6 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B5CF0E2E209B759A00A700F6;
+					};
 					B5CF0E2E209B759A00A700F6 = {
 						CreatedOnToolsVersion = 9.0.1;
 						ProvisioningStyle = Automatic;
@@ -110,16 +188,25 @@
 			projectRoot = "";
 			targets = (
 				B5CF0E2E209B759A00A700F6 /* WaniKaniBar */,
+				B525ABE320A34B3500A388E6 /* WaniKaniBarTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B525ABE220A34B3500A388E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5CF0E2D209B759A00A700F6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B5CF0E35209B759A00A700F6 /* Assets.xcassets in Resources */,
+				B5E87AE7209C79A800D3B261 /* PreferencesWindow.xib in Resources */,
 				B5CF0E38209B759A00A700F6 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,15 +214,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B525ABE020A34B3500A388E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B525ABE720A34B3500A388E6 /* WaniKaniBarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5CF0E2B209B759A00A700F6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5E87AE6209C79A800D3B261 /* PreferencesWindow.swift in Sources */,
+				B5CF0E43209B7DD300A700F6 /* WaniKaniAPI.swift in Sources */,
 				B5CF0E33209B759A00A700F6 /* AppDelegate.swift in Sources */,
+				B577204A209DD85600C7BAE5 /* time.swift in Sources */,
+				B5CF0E41209B789500A700F6 /* WaniKaniBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B525ABEA20A34B3500A388E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5CF0E2E209B759A00A700F6 /* WaniKaniBar */;
+			targetProxy = B525ABE920A34B3500A388E6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B5CF0E36209B759A00A700F6 /* MainMenu.xib */ = {
@@ -149,6 +256,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B525ABEB20A34B3500A388E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = WaniKaniBarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = brgwebltd.WaniKaniBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WaniKaniBar.app/Contents/MacOS/WaniKaniBar";
+			};
+			name = Debug;
+		};
+		B525ABEC20A34B3500A388E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = WaniKaniBarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = brgwebltd.WaniKaniBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WaniKaniBar.app/Contents/MacOS/WaniKaniBar";
+			};
+			name = Release;
+		};
 		B5CF0E3B209B759A00A700F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -259,7 +396,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = WaniKaniBar/WaniKaniBar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = WaniKaniBar/Info.plist;
@@ -274,7 +410,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = WaniKaniBar/WaniKaniBar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = WaniKaniBar/Info.plist;
@@ -288,6 +423,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B525ABED20A34B3500A388E6 /* Build configuration list for PBXNativeTarget "WaniKaniBarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B525ABEB20A34B3500A388E6 /* Debug */,
+				B525ABEC20A34B3500A388E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B5CF0E2A209B759A00A700F6 /* Build configuration list for PBXProject "WaniKaniBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

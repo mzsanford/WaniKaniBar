@@ -8,32 +8,69 @@
 
 import Cocoa
 
-
-
 class WaniKaniBarController: NSObject, PreferencesWindowDelegate {
-  @IBOutlet weak var statusMenu: NSMenu!
-  
   let wanikaniAPI = WaniKaniAPI()
-  let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
   var preferencesWindow: PreferencesWindow!
   
+  let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
   
   var availableReviews: Int = 0
   var availableLessons: Int = 0
   var nextReviewDate: TimeInterval = 0
   var lastFetch: TimeInterval = 0
   
-
-  override func awakeFromNib() {
-    statusItem.menu = statusMenu
-    statusItem.title = ""
-    statusItem.image = getIcon(hasReviews: false)
+  override init() {
+    super.init()
+    
+    statusItem.menu = constructMenu();
+    statusItem.button!.image = getIcon(hasReviews: false)
+    statusItem.button!.imagePosition = NSControl.ImagePosition.imageLeft
 
     preferencesWindow = PreferencesWindow()
     preferencesWindow.delegate = self
-  
+    
     getStudyQueue()
   }
+  
+  
+  func constructMenu() -> NSMenu {
+    let study = NSMenuItem(title: "Study!", action: #selector(self.handleStudyClick(_:)), keyEquivalent: "");
+    study.target = self;
+
+    let update = NSMenuItem(title: "Update", action: #selector(self.handleUpdateClick(_:)), keyEquivalent: "")
+    update.target = self;
+    
+    let preferences = NSMenuItem(title: "Preferences...", action: #selector(self.handlePreferencesClick(_:)), keyEquivalent: ",")
+    preferences.target = self;
+    
+    let quit = NSMenuItem(title: "Quit it", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+    
+    let menu = NSMenu()
+    menu.addItem(study)
+    menu.addItem(NSMenuItem.separator())
+    menu.addItem(update)
+    menu.addItem(preferences)
+    menu.addItem(NSMenuItem.separator())
+    menu.addItem(quit);
+  
+    return menu
+  }
+  
+  @objc func handleStudyClick(_ sender: NSMenuItem) {
+    if let url = URL(string: "https://www.wanikani.com") {
+      NSWorkspace.shared.open(url)
+    }
+  }
+  
+  @objc func handleUpdateClick(_ sender: NSMenuItem) {
+    getStudyQueue()
+  }
+  
+  @objc func handlePreferencesClick(_ sender: NSMenuItem) {
+    preferencesWindow.showWindow(nil)
+    preferencesWindow.setWindowVisible()
+  }
+
   
   func preferencesDidUpdate() {
     getStudyQueue()
@@ -53,7 +90,7 @@ class WaniKaniBarController: NSObject, PreferencesWindowDelegate {
   
   
   func getIcon(hasReviews: Bool) -> NSImage? {
-    let statusIcon = NSImage(named: NSImage.Name(rawValue: "available-icon"))
+    let statusIcon = NSImage(named: "available-icon")
     statusIcon?.isTemplate = !hasReviews
     
     return statusIcon
@@ -71,20 +108,25 @@ class WaniKaniBarController: NSObject, PreferencesWindowDelegate {
     return studyQueue.nextReviewDate - NSDate().timeIntervalSince1970
   }
   
+  
+  
+  
   func getStudyQueue() {
     print("getStudyQueue")
+    
+    let pb = NSPasteboard.general.pasteboardItems?.first?.string(forType: .string);
     let defaults = UserDefaults.standard
-    let apiKey = defaults.string(forKey: "ApiKey") ?? ""
+    let apiKey = defaults.string(forKey: "ApiKey") ?? pb!
 
     guard apiKey != "" else {
-      statusItem.title = "Enter API key"
+      statusItem.button!.title = "Enter API key"
       return
     }
 
     wanikaniAPI.fetchStudyQueue(apiKey, success: { studyQueue in
       DispatchQueue.main.async {
-        self.statusItem.title = self.getTitle(studyQueue)
-        self.statusItem.image = self.getIcon(hasReviews: studyQueue.availableReviews > 0)
+        self.statusItem.button!.title = self.getTitle(studyQueue)
+        self.statusItem.button!.image = self.getIcon(hasReviews: studyQueue.availableReviews > 0)
         
 //        print(NSDate().timeIntervalSince1970)
         self.lastFetch = NSDate().timeIntervalSince1970
@@ -167,7 +209,7 @@ class WaniKaniBarController: NSObject, PreferencesWindowDelegate {
     
     if var counter = countdown {
       if counter > 0 {
-        statusItem.title = getTitle(studyQueue)
+        statusItem.button?.title = getTitle(studyQueue)
         counter -= timeInterval
         countdown = counter
       }
@@ -217,24 +259,5 @@ class WaniKaniBarController: NSObject, PreferencesWindowDelegate {
   
   func getMultipleSuffix(_ value: Int) -> String {
     return isNotSingular(value) ? "s" : ""
-  }
-  
-  @IBAction func wanikaniClicked(_ sender: NSMenuItem) {
-    if let url = URL(string: "https://www.wanikani.com") {
-      NSWorkspace.shared.open(url)
-    }
-  }
-  
-  @IBAction func preferencesClicked(_ sender: NSMenuItem) {
-    preferencesWindow.showWindow(nil)
-    preferencesWindow.setWindowVisible()
-  }
-  
-  @IBAction func updateClicked(_ sender: NSMenuItem) {
-    getStudyQueue()
-  }
-  
-  @IBAction func quitClicked(_ sender: NSMenuItem) {
-    NSApplication.shared.terminate(self)
   }
 }

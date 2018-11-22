@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		B525ABE720A34B3500A388E6 /* WaniKaniBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B525ABE620A34B3500A388E6 /* WaniKaniBarTests.swift */; };
 		B577204A209DD85600C7BAE5 /* time.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5772049209DD85600C7BAE5 /* time.swift */; };
-		B5CF0E33209B759A00A700F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF0E32209B759A00A700F6 /* AppDelegate.swift */; };
+		B5CF0E33209B759A00A700F6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF0E32209B759A00A700F6 /* main.swift */; };
 		B5CF0E35209B759A00A700F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5CF0E34209B759A00A700F6 /* Assets.xcassets */; };
-		B5CF0E38209B759A00A700F6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5CF0E36209B759A00A700F6 /* MainMenu.xib */; };
 		B5CF0E41209B789500A700F6 /* WaniKaniBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF0E40209B789500A700F6 /* WaniKaniBarController.swift */; };
 		B5CF0E43209B7DD300A700F6 /* WaniKaniAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF0E42209B7DD300A700F6 /* WaniKaniAPI.swift */; };
+		B5D301F9218F7CB8001A1336 /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D301F8218F7CB8001A1336 /* StatusBar.swift */; };
 		B5E87AE6209C79A800D3B261 /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E87AE4209C79A800D3B261 /* PreferencesWindow.swift */; };
 		B5E87AE7209C79A800D3B261 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E87AE5209C79A800D3B261 /* PreferencesWindow.xib */; };
 /* End PBXBuildFile section */
@@ -34,13 +34,13 @@
 		B525ABE820A34B3500A388E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5772049209DD85600C7BAE5 /* time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = time.swift; sourceTree = "<group>"; };
 		B5CF0E2F209B759A00A700F6 /* WaniKaniBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaniKaniBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5CF0E32209B759A00A700F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B5CF0E32209B759A00A700F6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B5CF0E34209B759A00A700F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B5CF0E37209B759A00A700F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B5CF0E39209B759A00A700F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5CF0E3A209B759A00A700F6 /* WaniKaniBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WaniKaniBar.entitlements; sourceTree = "<group>"; };
 		B5CF0E40209B789500A700F6 /* WaniKaniBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaniKaniBarController.swift; sourceTree = "<group>"; };
 		B5CF0E42209B7DD300A700F6 /* WaniKaniAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaniKaniAPI.swift; sourceTree = "<group>"; };
+		B5D301F8218F7CB8001A1336 /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		B5E87AE4209C79A800D3B261 /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
 		B5E87AE5209C79A800D3B261 /* PreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,18 +101,42 @@
 		B5CF0E31209B759A00A700F6 /* WaniKaniBar */ = {
 			isa = PBXGroup;
 			children = (
-				B5CF0E32209B759A00A700F6 /* AppDelegate.swift */,
+				B5D301FC218F7FD7001A1336 /* views */,
+				B5D301FB218F7FCF001A1336 /* controllers */,
 				B5CF0E40209B789500A700F6 /* WaniKaniBarController.swift */,
+				B5D301FA218F7FC5001A1336 /* models */,
 				B5772048209DD83E00C7BAE5 /* utils */,
 				B5E87AE4209C79A800D3B261 /* PreferencesWindow.swift */,
 				B5E87AE5209C79A800D3B261 /* PreferencesWindow.xib */,
+				B5D301F8218F7CB8001A1336 /* StatusBar.swift */,
 				B5CF0E42209B7DD300A700F6 /* WaniKaniAPI.swift */,
+				B5CF0E32209B759A00A700F6 /* main.swift */,
 				B5CF0E34209B759A00A700F6 /* Assets.xcassets */,
-				B5CF0E36209B759A00A700F6 /* MainMenu.xib */,
 				B5CF0E39209B759A00A700F6 /* Info.plist */,
 				B5CF0E3A209B759A00A700F6 /* WaniKaniBar.entitlements */,
 			);
 			path = WaniKaniBar;
+			sourceTree = "<group>";
+		};
+		B5D301FA218F7FC5001A1336 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		B5D301FB218F7FCF001A1336 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		B5D301FC218F7FD7001A1336 /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,11 +184,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Ben Griffith";
 				TargetAttributes = {
 					B525ABE320A34B3500A388E6 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						TestTargetID = B5CF0E2E209B759A00A700F6;
 					};
@@ -207,7 +232,6 @@
 			files = (
 				B5CF0E35209B759A00A700F6 /* Assets.xcassets in Resources */,
 				B5E87AE7209C79A800D3B261 /* PreferencesWindow.xib in Resources */,
-				B5CF0E38209B759A00A700F6 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +252,8 @@
 			files = (
 				B5E87AE6209C79A800D3B261 /* PreferencesWindow.swift in Sources */,
 				B5CF0E43209B7DD300A700F6 /* WaniKaniAPI.swift in Sources */,
-				B5CF0E33209B759A00A700F6 /* AppDelegate.swift in Sources */,
+				B5CF0E33209B759A00A700F6 /* main.swift in Sources */,
+				B5D301F9218F7CB8001A1336 /* StatusBar.swift in Sources */,
 				B577204A209DD85600C7BAE5 /* time.swift in Sources */,
 				B5CF0E41209B789500A700F6 /* WaniKaniBarController.swift in Sources */,
 			);
@@ -244,17 +269,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		B5CF0E36209B759A00A700F6 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B5CF0E37209B759A00A700F6 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		B525ABEB20A34B3500A388E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -266,7 +280,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = brgwebltd.WaniKaniBarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WaniKaniBar.app/Contents/MacOS/WaniKaniBar";
 			};
 			name = Debug;
@@ -281,7 +295,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = brgwebltd.WaniKaniBarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WaniKaniBar.app/Contents/MacOS/WaniKaniBar";
 			};
 			name = Release;
@@ -300,6 +314,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -307,6 +322,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -357,6 +373,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -364,6 +381,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -400,9 +418,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = WaniKaniBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = brgwebltd.WaniKaniBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -414,9 +433,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = WaniKaniBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = brgwebltd.WaniKaniBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

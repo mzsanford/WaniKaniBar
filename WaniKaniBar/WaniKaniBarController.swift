@@ -10,7 +10,7 @@ import Cocoa
 
 
 
-class WaniKaniBarController: NSObject, PreferencesWindowDelegate {
+class WaniKaniBarController: NSObject, PreferencesWindowDelegate, NSUserNotificationCenterDelegate {
   @IBOutlet weak var statusMenu: NSMenu!
   
   let wanikaniAPI = WaniKaniAPI()
@@ -38,20 +38,26 @@ class WaniKaniBarController: NSObject, PreferencesWindowDelegate {
   func preferencesDidUpdate() {
     getStudyQueue()
   }
-  
-  
-//  func notifyUser(reviewCount: Int) {
-//    let notification = NSUserNotification()
-//    notification.title = "Reviews now available!"
-//    notification.informativeText = "You have \(reviewCount) cards awaiting review."
-//    notification.hasActionButton = true
-//    notification.actionButtonTitle = "Review"
-//    NSUserNotificationCenter.default.deliver(notification)
-//    NSSound(named: NSSound.Name(rawValue: "Purr"))?.play()
-//  }
-  
-  
-  
+
+  func notifyUser(reviewCount: Int) {
+    let notification = NSUserNotification()
+    notification.title = "Reviews now available!"
+    if (reviewCount == 1) {
+        notification.informativeText = "You have 1 review waiting."
+    } else {
+        notification.informativeText = "You have \(reviewCount) reviews waiting."
+    }
+    notification.hasActionButton = true
+    notification.actionButtonTitle = "Review"
+    NSUserNotificationCenter.default.delegate = self
+    NSUserNotificationCenter.default.deliver(notification)
+    NSSound(named: NSSound.Name(rawValue: "Purr"))?.play()
+  }
+
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        openReviewQueue()
+    }
+
   func getIcon(hasReviews: Bool) -> NSImage? {
     let statusIcon = NSImage(named: NSImage.Name(rawValue: "available-icon"))
     statusIcon?.isTemplate = !hasReviews
@@ -110,15 +116,12 @@ class WaniKaniBarController: NSObject, PreferencesWindowDelegate {
             self.endTimer()
           }
         }
-        
-        
+
         // Store latest data
         self.availableReviews = studyQueue.availableReviews
         self.availableLessons = studyQueue.availableLessons
         self.nextReviewDate = studyQueue.nextReviewDate
-        
 
-        
         if studyQueue.availableReviews > 0 {
           self.setupTimer(studyQueue, timeInterval: 300)
         } else {
@@ -129,13 +132,14 @@ class WaniKaniBarController: NSObject, PreferencesWindowDelegate {
         }
 
         // Only want to send a notification if we're going from having no available reviews to having some
-//        if studyQueue.availableReviews > 0 {
-//          self.notifyUser(reviewCount: studyQueue.availableReviews)
-//        }
+        if (self.notificationsEnabled()) {
+            if studyQueue.availableReviews > 0 {
+              self.notifyUser(reviewCount: studyQueue.availableReviews)
+            }
+        }
       }
     })
   }
-  
 
   var timer = Timer()
   var isTimerRunner: Bool = false
@@ -212,18 +216,42 @@ class WaniKaniBarController: NSObject, PreferencesWindowDelegate {
   }
   
   func isNotSingular(_ value: Int) -> Bool {
-    return value > 1
+    return value != 1
   }
   
   func getMultipleSuffix(_ value: Int) -> String {
     return isNotSingular(value) ? "s" : ""
   }
+
+  func hasAPIKey() -> Bool {
+    let apiKey = UserDefaults.standard.string(forKey: "ApiKey")
+    return apiKey != nil
+  }
+
+    func notificationsEnabled() -> Bool {
+        // TODO: Make this a preference
+        return true
+    }
   
   @IBAction func wanikaniClicked(_ sender: NSMenuItem) {
-    if let url = URL(string: "https://www.wanikani.com") {
-      NSWorkspace.shared.open(url)
+    if (!hasAPIKey()) {
+        if let url = URL(string: "https://www.wanikani.com/settings/account") {
+            NSWorkspace.shared.open(url)
+        }
+    } else {
+        if let url = URL(string: "https://www.wanikani.com/") {
+
+            NSWorkspace.shared.open(url)
+        }
     }
   }
+
+    func openReviewQueue() {
+        if let url = URL(string: "https://www.wanikani.com/review") {
+
+            NSWorkspace.shared.open(url)
+        }
+    }
   
   @IBAction func preferencesClicked(_ sender: NSMenuItem) {
     preferencesWindow.showWindow(nil)

@@ -23,4 +23,5 @@ There is a notification when reviews become available (soon to be optional). Cli
  - [ ] Make notifications optional via preferences
  - [ ] Fix "Display time until next review" (not currently working)
  - [ ] Package for simple installation
+ - [ ] Fix "Lajnch WaniKani Bar on startup" (not currently implemented)
  - [ ] Auto import API key

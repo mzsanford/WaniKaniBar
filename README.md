@@ -20,8 +20,8 @@ There is a notification when reviews become available (soon to be optional). Cli
  - [x] Add app icon to improve notification display
  - [x] Add notification click handling to open WaniKani reviews page
  - [x] Open the WaniKani settings page when clicked and API key is not yet present
- - [ ] Make notifications optional via preferences
- - [ ] Fix "Display time until next review" (not currently working)
+ - [x] Make notifications optional via preferences
+ - [x] Fix "Display time until next review" (not currently working)
  - [ ] Package for simple installation
- - [ ] Fix "Lajnch WaniKani Bar on startup" (not currently implemented)
+ - [ ] Fix "Launch WaniKani Bar on startup" (not currently implemented)
  - [ ] Auto import API key

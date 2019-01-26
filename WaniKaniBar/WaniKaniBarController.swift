@@ -8,8 +8,6 @@
 
 import Cocoa
 
-
-
 class WaniKaniBarController: NSObject, PreferencesWindowDelegate, NSUserNotificationCenterDelegate {
   @IBOutlet weak var statusMenu: NSMenu!
   
@@ -66,11 +64,15 @@ class WaniKaniBarController: NSObject, PreferencesWindowDelegate, NSUserNotifica
   }
   
   func getTitle(_ studyQueue: StudyQueue) -> String {
-    let title = studyQueue.availableReviews > 0
-      ? "\(studyQueue.availableReviews) reviews"
-      : "\(self.getTimeTillNextReview(timestamp: studyQueue.nextReviewDate))"
-    
-    return title
+    if shouldDisplayTimeUntilNextReview() {
+        if studyQueue.availableReviews > 0 {
+            return "\(studyQueue.availableReviews) reviews"
+        } else {
+            return "\(self.getTimeTillNextReview(timestamp: studyQueue.nextReviewDate))"
+        }
+    } else {
+        return ""
+    }
   }
   
   func getNextReviewCountdown(_ studyQueue: StudyQueue) -> TimeInterval {
@@ -80,7 +82,7 @@ class WaniKaniBarController: NSObject, PreferencesWindowDelegate, NSUserNotifica
   func getStudyQueue() {
     print("getStudyQueue")
     let defaults = UserDefaults.standard
-    let apiKey = defaults.string(forKey: "ApiKey") ?? ""
+    let apiKey = defaults.string(forKey: PreferencesWindow.PrefKeyApiKey) ?? ""
 
     guard apiKey != "" else {
       statusItem.title = "Enter API key"
@@ -92,7 +94,6 @@ class WaniKaniBarController: NSObject, PreferencesWindowDelegate, NSUserNotifica
         self.statusItem.title = self.getTitle(studyQueue)
         self.statusItem.image = self.getIcon(hasReviews: studyQueue.availableReviews > 0)
         
-//        print(NSDate().timeIntervalSince1970)
         self.lastFetch = NSDate().timeIntervalSince1970
         
         // If nothing has changed
@@ -224,13 +225,16 @@ class WaniKaniBarController: NSObject, PreferencesWindowDelegate, NSUserNotifica
   }
 
   func hasAPIKey() -> Bool {
-    let apiKey = UserDefaults.standard.string(forKey: "ApiKey")
+    let apiKey = UserDefaults.standard.string(forKey: PreferencesWindow.PrefKeyApiKey)
     return apiKey != nil
   }
 
     func notificationsEnabled() -> Bool {
-        // TODO: Make this a preference
-        return true
+        return UserDefaults.standard.bool(forKey: PreferencesWindow.PrefKeyNotifications)
+    }
+
+    func shouldDisplayTimeUntilNextReview() -> Bool {
+        return UserDefaults.standard.bool(forKey: PreferencesWindow.PrefKeyShowTime)
     }
   
   @IBAction func wanikaniClicked(_ sender: NSMenuItem) {

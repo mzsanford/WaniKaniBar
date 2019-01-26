@@ -13,7 +13,14 @@ protocol PreferencesWindowDelegate {
 }
 
 class PreferencesWindow: NSWindowController, NSWindowDelegate {
+    public static let PrefKeyNotifications: String! = "showNotifications"
+    public static let PrefKeyShowTime: String! = "showTime"
+    public static let PrefKeyApiKey: String! = "ApiKey"
+
   @IBOutlet weak var userApiKeyTextField: NSTextField!
+  @IBOutlet weak var showNotificationButton: NSButton!
+  @IBOutlet weak var showTimeButton: NSButton!
+  @IBOutlet weak var autoStartButton: NSButton!
   
   var delegate: PreferencesWindowDelegate?
   
@@ -23,6 +30,23 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
   
   override func windowDidLoad() {
     super.windowDidLoad()
+
+    let defaults = UserDefaults.standard
+    if let val = defaults.string(forKey: PreferencesWindow.PrefKeyApiKey) {
+        userApiKeyTextField.stringValue = val
+    }
+
+    if defaults.bool(forKey: PreferencesWindow.PrefKeyNotifications) {
+        showNotificationButton.state = .on
+    } else {
+        showNotificationButton.state = .off
+    }
+
+    if defaults.bool(forKey: PreferencesWindow.PrefKeyShowTime) {
+        showTimeButton.state = .on
+    } else {
+        showTimeButton.state = .off
+    }
     
     self.window?.center()
     self.window?.makeKeyAndOrderFront(nil)
@@ -34,7 +58,10 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
   
   func windowWillClose(_ notification: Notification) {
     let defaults = UserDefaults.standard
-    defaults.setValue(userApiKeyTextField.stringValue, forKey: "ApiKey")
+
+    defaults.setValue(userApiKeyTextField.stringValue, forKey: PreferencesWindow.PrefKeyApiKey)
+    defaults.setValue(showNotificationButton.state == .on, forKey: PreferencesWindow.PrefKeyNotifications)
+    defaults.setValue(showTimeButton.state == .on, forKey: PreferencesWindow.PrefKeyShowTime)
     
     delegate?.preferencesDidUpdate()
   }
